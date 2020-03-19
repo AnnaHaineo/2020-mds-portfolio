@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vue.js Tableau</title>
+
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            background-color: black;
+        }
+
+        #barre {
+            width: 100vw;
+            background-color: black;
+            z-index: 9;
+            position: fixed;
+        }
+
+        .nouveau {
+            color: brown;
+        }
+
+        .titre {
+            color: crimson;
+        }
+
+        #logo {
+            width: 100px;
+        }
+
+        #contact {
+            color: white;
+        }
+
+        ul li {
+            color: white;
+            margin-left: 20px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-transform: capitalize;
+        }
+
+        ul {
+            list-style-type: none;
+            display: flex;
+        }
+
+        .navCategorie {
+            margin-right: 20px;
+        }
+
+        .listeTag {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+        }
+
+        #projets {
+            padding-top: 100px;
+        }
+
+        .bloc {
+            background-color: blue;
+            overflow: hidden;
+        }
+
+        .img {
+            position: relative;
+            height: calc(100vh - 100px);
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .textes {
+            position: absolute;
+            bottom: 10vh;
+            z-index: 999;
+            color: white;
+            width: 33.333333%;
+        }
+
+        h1 {
+            text-transform: uppercase;
+            font-size: 1.5em;
+            margin: 0px 20px 20px 20px;
+            font-family: arial;
+        }
+
+        p {
+            font-size: 1em;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px 20px 0 20px;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+    <div id="app">
+        <div id="barre">
+            <div class="listeTag">
+                <img id="logo" src="img/logo-blanc.png">
+                <ul class="navCategorie">
+                    <li v-for="tag in afficherTags()"><a href="#" v-on:click="filteredProjet(tag)">{{tag}}</a></li>
+                    <li id="contact"><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div id="projets"
+            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'">
+            <div class="bloc" v-for="tab in projets">
+                <img class="img" :src="tab.image">
+                <div class="textes">
+                    <h1>{{ tab.titre }}</h1>
+                    <p>{{ tab.descriptif }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                nbrproj: 0,
+                categorie: '',
+                projets: [],
+                tabs: [
+                    {
+                        titre: "Civel",
+                        image: "img/starwars1.jpg",
+                        descriptif: "Maquette de site internet de showroom de mobilier haut de gamme",
+                        tags: ['Webdesign', 'Charte Graphique']
+                    },
+                    {
+                        titre: "Ornbiomedical",
+                        image: "img/starwars2.jpg",
+                        descriptif: "Création d'identité visuelle pour un laboratoire de biologie médicale",
+                        tags: ['Charte graphique', 'Webdesign']
+                    },
+                    {
+                        titre: "Civel",
+                        image: "img/starwars3.jpg",
+                        descriptif: "Maquette de site internet de showroom de mobilier haut de gamme",
+                        tags: ['Webdesign']
+                    },
+                    {
+                        titre: "Ornbiomedical",
+                        image: "img/starwars4.jpg",
+                        descriptif: "Création d'identité visuelle pour un laboratoire de biologie médicale",
+                        tags: ['Développement', 'Webdesign']
+                    },
+                    {
+                        titre: "Civel",
+                        image: "img/starwars3.jpg",
+                        descriptif: "Maquette de site internet de showroom de mobilier haut de gamme",
+                        tags: ['Webdesign']
+                    }
+                ]
+            },
+            methods: {
+                afficherTags: function () {
+                    var listeTags = [];
+                    listeTags = this.tabs.map(t => t.tags)
+                    listeTags = listeTags.flat(2);
+                    listeTags = listeTags.map(t => t.toLowerCase());
+                    listeTags = [...new Set(listeTags)];
+                    console.log(listeTags);
+                    return listeTags;
+                },
+
+                nbrProjets: function () {
+                    this.nbrproj = this.tabs.length;
+                },
+
+
+                filteredProjet: function (tag) {
+                    this.projets = this.tabs;
+                    var categorie = tag;
+
+
+                    if (!categorie) {
+                        return this.projets;
+                    }
+                    console.log(this.projets);
+
+                    this.projets = this.projets.filter(function (item) {
+                        listeTags = item.tags.map(t => t.toLowerCase());
+                        if (listeTags.indexOf(categorie) !== -1) {
+                            console.log(item);
+                            return item;
+                        }
+                    })
+                    console.log(this.projets);
+                    return this.projets;
+                }
+            },
+            computed: {
+
+            },
+            mounted() {
+                this.nbrProjets();
+                console.log(this.nbrproj);
+                this.filteredProjet();
+            }
+        })
+    </script>
+</body>
+
+</html>
