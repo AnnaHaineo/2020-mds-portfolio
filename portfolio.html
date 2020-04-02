@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Vue.js Tableau</title>
+    <title>Annabelle Grisard Portfolio</title>
 
     <style>
 
@@ -77,8 +77,10 @@
             object-fit: cover;
         }
         .textes {
+            padding: 20px 0px 20px 0px;
+            background-color: rgba(0, 0, 0, 0.5);
             position: absolute;
-            bottom: 10vh;
+            bottom: 4vh;
             z-index: 999;
             color: white;
             width: 33.333333%;
@@ -91,6 +93,11 @@
         }
         p {
             font-size: 1em;
+        }
+        h2 {
+            font-size: 1.2em;
+        }
+        p, h2 {
             font-family: 'Caviar Dreams';
             margin: 0px 20px 0 20px;
         }
@@ -122,7 +129,8 @@
                 <img class="img" :src="tab.image">
                 <div class="textes">
                     <h1>{{ tab.titre }}</h1>
-                    <p>{{ tab.descriptif }}</p>
+                    <p>{{ tab.descriptif }}</p><br>
+                    <h2>{{ tab.nomprojet }}</h2>
                 </div>
             </div>
         </div>
@@ -138,32 +146,37 @@
                 projets: [],
                 tabs: [
                     {
-                        titre: "Civel",
-                        image: "img/starwars1.jpg",
-                        descriptif: "Maquette de site internet de showroom de mobilier haut de gamme",
+                        titre: "Refonte d'une identité graphique",
+                        nomprojet: "Ornbiomedical",
+                        image: "img/ornbiomedical.jpg",
+                        descriptif: "Projet pour un laboratoire de biologie médical, du logo jusqu'à l'application interne",
                         tags: ['Webdesign', 'Charte Graphique']
                     },
                     {
-                        titre: "Ornbiomedical",
-                        image: "img/starwars2.jpg",
-                        descriptif: "Création d'identité visuelle pour un laboratoire de biologie médicale",
+                        titre: "Création d'une identité graphique",
+                        nomprojet: "Jardin des Plantes",
+                        image: "img/jardindesplantes.jpg",
+                        descriptif: "Création d'un logo d'une communication globale pour un jardin des plantes Nantais",
                         tags: ['Charte graphique', 'Webdesign']
                     },
                     {
-                        titre: "Civel",
-                        image: "img/starwars3.jpg",
-                        descriptif: "Maquette de site internet de showroom de mobilier haut de gamme",
-                        tags: ['Webdesign']
+                        titre: "Réalisation d'un site internet",
+                        nomprojet: "AMP49",
+                        image: "img/amp.jpg",
+                        descriptif: "Création du site internet pour Anjou Maquettes Prototypes, entreprise angevine",
+                        tags: ['Webdesign', 'Développement']
                     },
                     {
-                        titre: "Ornbiomedical",
-                        image: "img/starwars4.jpg",
-                        descriptif: "Création d'identité visuelle pour un laboratoire de biologie médicale",
+                        titre: "Site internet onepage promotionel",
+                        nomprojet: "Fidelio Philips",
+                        image: "img/philips.jpg",
+                        descriptif: "Site internet promotionel onepage pour une nouvelle gamme de casque chez Philips",
                         tags: ['Développement', 'Webdesign']
                     },
                     {
-                        titre: "Civel",
-                        image: "img/starwars3.jpg",
+                        titre: "Réalisation de maquette pour un site responsive",
+                        nomprojet: "Civel",
+                        image: "img/civel.jpg",
                         descriptif: "Maquette de site internet de showroom de mobilier haut de gamme",
                         tags: ['Webdesign']
                     }
