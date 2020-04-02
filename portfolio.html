@@ -118,8 +118,9 @@
             <div class="listeTag">
                 <a href="portfolio.html"><img id="logo" src="img/logo-blanc.png"></a>
                 <ul class="navCategorie">
+                    <li id="présentation"><a href="#">Présentation</a></li>
                     <li v-for="tag in afficherTags()"><a href="#" v-on:click="filteredProjet(tag)">{{tag}}</a></li>
-                    <li id="contact"><a href="contact.html">Contact</a></li>
+                    <li id="contact"><a href="#">Contact</a></li>
                 </ul>
             </div>
         </div>
@@ -149,9 +150,9 @@
                     {
                         titre: "Refonte d'une identité graphique",
                         nomprojet: "Ornbiomedical",
-                        image: "img/ornbiomedical.jpg",
+                        image: "img/ornbiomedical2.jpg",
                         descriptif: "Projet pour un laboratoire de biologie médical, du logo jusqu'à l'application interne",
-                        tags: ['Webdesign', 'Charte Graphique']
+                        tags: ['Charte Graphique', 'Webdesign']
                     },
                     {
                         titre: "Création d'une identité graphique",
@@ -172,7 +173,7 @@
                         nomprojet: "Fidelio Philips",
                         image: "img/philips.jpg",
                         descriptif: "Site internet promotionel onepage pour une nouvelle gamme de casque chez Philips",
-                        tags: ['Développement', 'Webdesign']
+                        tags: ['Webdesign', 'Développement']
                     },
                     {
                         titre: "Réalisation de maquette pour un site responsive",
@@ -220,7 +221,7 @@
                     return this.projets;
                 }
 
-                
+
             },
             computed: {
 
