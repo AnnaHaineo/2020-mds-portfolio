@@ -5,137 +5,82 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
     <title>Annabelle Grisard Portfolio</title>
 
-    <style>
-
-        @font-face {
-            font-family: 'Caviar Dreams';
-            src: url('fonts/CaviarDreams.ttf');
-        }
-        @font-face {
-            font-family: 'Caviar Dreams';
-            font-style: italic;
-            src: url('fonts/CaviarDreams_Italic.ttf');
-        }
-        @font-face {
-            font-family: 'Caviar Dreams';
-            font-weight: bold;
-            src: url('fonts/Caviar_Dreams_Bold.ttf');
-        }
-        body {
-            margin: 0px;
-            padding: 0px;
-            background-color: black;
-        }
-        #barre {
-            width: 100vw;
-            background-color: black;
-            z-index: 9;
-            position: fixed;
-        }
-        .nouveau {
-            color: brown;
-        }
-        .titre {
-            color: crimson;
-        }
-        #logo {
-            width: 100px;
-        }
-        #contact {
-            color: white;
-        }
-        ul li {
-            color: white;
-            margin-left: 20px;
-            font-family: 'Caviar Dreams';
-        }
-        ul {
-            list-style-type: none;
-            display: flex;
-        }
-        .navCategorie {
-            margin-right: 20px;
-        }
-        .listeTag {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-        }
-        #projets {
-            padding-top: 100px;
-        }
-        .bloc {
-            background-color: blue;
-            overflow: hidden;
-        }
-        .img {
-            position: relative;
-            height: calc(100vh - 100px);
-            width: 100%;
-            object-fit: cover;
-        }
-        .textes {
-            padding: 20px 0px 20px 0px;
-            /*background-color: rgba(0, 0, 0, 0.5);*/
-            background-color: rgba(0, 0, 0, 0.2);
-            position: absolute;
-            bottom: 4vh;
-            z-index: 999;
-            color: white;
-            width: 33.333333%;
-        }
-        h1 {
-            text-transform: uppercase;
-            font-size: 1.5em;
-            margin: 0px 20px 20px 20px;
-            font-family: 'Caviar Dreams';
-        }
-        p {
-            font-size: 1em;
-        }
-        h2 {
-            font-size: 1.2em;
-        }
-        p, h2 {
-            font-family: 'Caviar Dreams';
-            margin: 0px 20px 0 20px;
-        }
-        a {
-            text-decoration: none;
-            color: white;
-        }
-
-
-    </style>
-
 </head>
+<style>
+@font-face {
+    font-family: 'Caviar Dreams';
+    src: url('fonts/CaviarDreams.ttf');
+}
+@font-face {
+    font-family: 'Caviar Dreams';
+    font-style: italic;
+    src: url('fonts/CaviarDreams_Italic.ttf');
+}
+@font-face {
+    font-family: 'Caviar Dreams';
+    font-weight: bold;
+    src: url('fonts/Caviar_Dreams_Bold.ttf');
+}
+.detailprojet h1, .detailprojet p, .detailprojet h2 {
+    color: white;
+}
+
+</style>
 
 <body>
     <div id="app">
         <div id="barre">
             <div class="listeTag">
-                <a href="portfolio.html"><img id="logo" src="img/logo-blanc.png"></a>
+                <a href="index.html"><img id="logo" src="img/logo-blanc.png"></a>
                 <ul class="navCategorie">
-                    <li id="présentation"><a href="#">Présentation</a></li>
+                    <li id="présentation"><a href="#" @click="display = 'presentation'">Présentation</a></li>
                     <li v-for="tag in afficherTags()"><a href="#" v-on:click="filteredProjet(tag)">{{tag}}</a></li>
-                    <li id="contact"><a href="#">Contact</a></li>
+                    <li id="contact"><a href="#" @click="display = 'contact'">Contact</a></li>
                 </ul>
             </div>
         </div>
 
-        <div id="projets"
+
+        <div v-if="display === 'liste_projets'" id="projets"
             :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'">
-            <div class="bloc" v-for="tab in projets">
-                <img class="img" :src="tab.image">
-                <div class="textes">
-                    <h1>{{ tab.titre }}</h1>
-                    <p>{{ tab.descriptif }}</p><br>
-                    <h2>{{ tab.nomprojet }}</h2>
-                </div>
+            <div class="bloc" v-for="tab in projets" :id="tab.id">
+                <a href="#" @click="change_display(tab.id)">
+                    <img class="img" :src="tab.image">
+                    <div class="textes">
+                        <h1>{{ tab.titre }}</h1>
+                        <p>{{ tab.descriptif }}</p><br>
+                        <h2>{{ tab.nomprojet }}</h2>
+                    </div>
+                </a>
             </div>
         </div>
+
+        <div v-if="display === 'detail_projet'" id="detail_projet"
+            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'">
+            <div class="detailprojet">
+                <h1>{{ tabs[projet_selectionne].titre }}</h1>
+                <p>{{ tabs[projet_selectionne].descriptif }}</p><br>
+                <h2>{{ tabs[projet_selectionne].nomprojet }}</h2>
+            </div>
+        </div>
+
+        <div v-if="display === 'presentation'"
+            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'"></div>
+            <div class="bio">
+                <h1>Annabelle grisard</h1>
+            </div>
+        </div>
+        <div v-if="display === 'contact'"
+            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'"></div>
+            <div class="bio">
+                <h1>Me contacter</h1>
+            </div>
+        </div>
+
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
@@ -143,11 +88,14 @@
         new Vue({
             el: '#app',
             data: {
+                display: 'liste_projets',
+                projet_selectionne: 0,
                 nbrproj: 0,
                 categorie: '',
                 projets: [],
                 tabs: [
                     {
+                        id: 1,
                         titre: "Refonte d'une identité graphique",
                         nomprojet: "Ornbiomedical",
                         image: "img/ornbiomedical2.jpg",
@@ -155,6 +103,7 @@
                         tags: ['Charte Graphique', 'Webdesign']
                     },
                     {
+                        id: 2,
                         titre: "Création d'une identité graphique",
                         nomprojet: "Jardin des Plantes",
                         image: "img/jardindesplantes.jpg",
@@ -162,6 +111,7 @@
                         tags: ['Charte graphique', 'Webdesign']
                     },
                     {
+                        id: 3,
                         titre: "Réalisation d'un site internet",
                         nomprojet: "AMP49",
                         image: "img/amp.jpg",
@@ -169,6 +119,7 @@
                         tags: ['Webdesign', 'Développement']
                     },
                     {
+                        id: 4,
                         titre: "Site internet onepage promotionel",
                         nomprojet: "Fidelio Philips",
                         image: "img/philips.jpg",
@@ -176,6 +127,7 @@
                         tags: ['Webdesign', 'Développement']
                     },
                     {
+                        id: 5,
                         titre: "Réalisation de maquette pour un site responsive",
                         nomprojet: "Civel",
                         image: "img/civel.jpg",
@@ -185,6 +137,13 @@
                 ]
             },
             methods: {
+
+                change_display: function(id) {
+                    this.display = 'detail_projet';
+                    this.projet_selectionne = id;
+                    console.log(this.display);
+                }, 
+
                 afficherTags: function () {
                     var listeTags = [];
                     listeTags = this.tabs.map(t => t.tags)
@@ -201,6 +160,7 @@
 
 
                 filteredProjet: function (tag) {
+                    this.display = 'liste_projets';
                     this.projets = this.tabs;
                     var categorie = tag;
 
@@ -220,7 +180,6 @@
                     console.log(this.projets);
                     return this.projets;
                 }
-
 
             },
             computed: {

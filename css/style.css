@@ -1,0 +1,87 @@
+
+body {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+}
+#barre {
+    width: 100vw;
+    background-color: black;
+    z-index: 9;
+    position: fixed;
+}
+.nouveau {
+    color: brown;
+}
+.titre {
+    color: crimson;
+}
+#logo {
+    width: 100px;
+}
+#contact {
+    color: white;
+}
+ul li {
+    color: white;
+    margin-left: 20px;
+    font-family: 'Caviar Dreams';
+}
+ul {
+    list-style-type: none;
+    display: flex;
+}
+.navCategorie {
+    margin-right: 20px;
+}
+.listeTag {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+}
+.listeTag ul li a {
+    text-transform: capitalize;
+}
+#projets, .detailprojet {
+    padding-top: 100px;
+}
+.bloc {
+    background-color: blue;
+    overflow: hidden;
+}
+.img {
+    position: relative;
+    height: calc(100vh - 100px);
+    width: 100%;
+    object-fit: cover;
+}
+.textes {
+    padding: 20px 0px 20px 0px;
+    /*background-color: rgba(0, 0, 0, 0.5);*/
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 4vh;
+    z-index: 999;
+    color: white;
+    width: 33.333333%;
+}
+h1 {
+    text-transform: uppercase;
+    font-size: 1.5em;
+    margin: 0px 20px 20px 20px;
+    font-family: 'Caviar Dreams';
+}
+p {
+    font-size: 1em;
+}
+h2 {
+    font-size: 1.2em;
+}
+p, h2 {
+    font-family: 'Caviar Dreams';
+    margin: 0px 20px 0 20px;
+}
+a {
+    text-decoration: none;
+    color: white;
+}
