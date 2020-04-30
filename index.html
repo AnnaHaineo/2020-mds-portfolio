@@ -10,24 +10,28 @@
 
 </head>
 <style>
-@font-face {
-    font-family: 'Caviar Dreams';
-    src: url('fonts/CaviarDreams.ttf');
-}
-@font-face {
-    font-family: 'Caviar Dreams';
-    font-style: italic;
-    src: url('fonts/CaviarDreams_Italic.ttf');
-}
-@font-face {
-    font-family: 'Caviar Dreams';
-    font-weight: bold;
-    src: url('fonts/Caviar_Dreams_Bold.ttf');
-}
-.detailprojet h1, .detailprojet p, .detailprojet h2 {
-    color: white;
-}
+    @font-face {
+        font-family: 'Caviar Dreams';
+        src: url('fonts/CaviarDreams.ttf');
+    }
 
+    @font-face {
+        font-family: 'Caviar Dreams';
+        font-style: italic;
+        src: url('fonts/CaviarDreams_Italic.ttf');
+    }
+
+    @font-face {
+        font-family: 'Caviar Dreams';
+        font-weight: bold;
+        src: url('fonts/Caviar_Dreams_Bold.ttf');
+    }
+
+    .detailprojet h1,
+    .detailprojet p,
+    .detailprojet h2 {
+        color: white;
+    }
 </style>
 
 <body>
@@ -67,15 +71,15 @@
             </div>
         </div>
 
-        <div v-if="display === 'presentation'"
-            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'"></div>
+        <div v-if="display === 'presentation'" id="pagepresentation"
+            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'">
             <div class="bio">
                 <h1>Annabelle grisard</h1>
             </div>
         </div>
-        <div v-if="display === 'contact'"
-            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'"></div>
-            <div class="bio">
+        <div v-if="display === 'contact'" id="pagecontact" :style="'display: grid;grid-template-columns: 66.666666% auto'">
+            <img class="imgcontact" src="img/image-contact.jpg">
+            <div class="infoscontact">
                 <h1>Me contacter</h1>
             </div>
         </div>
@@ -138,11 +142,11 @@
             },
             methods: {
 
-                change_display: function(id) {
+                change_display: function (id) {
                     this.display = 'detail_projet';
                     this.projet_selectionne = id;
                     console.log(this.display);
-                }, 
+                },
 
                 afficherTags: function () {
                     var listeTags = [];

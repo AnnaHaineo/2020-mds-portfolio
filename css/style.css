@@ -42,18 +42,21 @@ ul {
 .listeTag ul li a {
     text-transform: capitalize;
 }
-#projets, .detailprojet {
+#projets, .detailprojet, #pagecontact, #pagepresentation {
     padding-top: 100px;
 }
 .bloc {
     background-color: blue;
     overflow: hidden;
 }
-.img {
+.img, .imgcontact {
     position: relative;
     height: calc(100vh - 100px);
     width: 100%;
     object-fit: cover;
+}
+.bgcontact {
+    width: 66.66666%;
 }
 .textes {
     padding: 20px 0px 20px 0px;
@@ -70,6 +73,7 @@ h1 {
     font-size: 1.5em;
     margin: 0px 20px 20px 20px;
     font-family: 'Caviar Dreams';
+    color: white;
 }
 p {
     font-size: 1em;
