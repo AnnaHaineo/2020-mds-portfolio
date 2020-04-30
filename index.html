@@ -47,7 +47,6 @@
             </div>
         </div>
 
-
         <div v-if="display === 'liste_projets'" id="projets"
             :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'">
             <div class="bloc" v-for="tab in projets" :id="tab.id">
@@ -71,8 +70,7 @@
             </div>
         </div>
 
-        <div v-if="display === 'presentation'" id="pagepresentation"
-            :style="'display: grid;grid-template-columns: repeat(' + nbrproj + ', 33.333333%);grid-template-rows: calc(100vh - 100px);'">
+        <div v-if="display === 'presentation'" id="pagepresentation">
             <div class="bio">
                 <h1>Annabelle grisard</h1>
             </div>
