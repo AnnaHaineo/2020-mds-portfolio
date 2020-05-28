@@ -1,9 +1,12 @@
 
-h1, h2, h3 {
-    font-family: 'CaviarDreamsBold';
+h1{
+    font-family: 'MontserratBold';
 }
-a, p, li, .listeTag ul li a {
-    font-family: 'CaviarDreamsRegular';
+h2{
+    font-family: 'MontserratMedium';
+}
+h3, a, p, li, .listeTag ul li a {
+    font-family: 'MontserratLight';
 }
 body {
     margin: 0px;
@@ -15,12 +18,6 @@ body {
     background-color: black;
     z-index: 9;
     position: fixed;
-}
-.nouveau {
-    color: brown;
-}
-.titre {
-    color: crimson;
 }
 #logo {
     width: 100px;
@@ -43,16 +40,15 @@ ul {
 .listeTag ul li a {
     text-transform: capitalize;
 }
-#projets, .detailprojet, #pagecontact, #pagepresentation {
-    padding-top: 105px;
+#projets, #detail_projet, #pagecontact, #pagepresentation {
+    padding-top: 98px;
 }
 .bloc {
-    background-color: blue;
     overflow: hidden;
 }
 .img, .imgcontact {
     position: relative;
-    height: calc(100vh - 100px);
+    height: 100%;
     width: 100%;
     object-fit: cover;
 }
@@ -61,13 +57,25 @@ ul {
 }
 .textes {
     padding: 20px 0px 20px 0px;
-    /*background-color: rgba(0, 0, 0, 0.5);*/
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.5);
+    /*background-color: rgba(0, 0, 0, 0.2);*/
     position: absolute;
     bottom: 4vh;
     z-index: 999;
     width: 33.333333%;
 }
+
+/* hover home */
+.textes:hover {
+    padding: 40px 0px 40px 0px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 4vh;
+    z-index: 999;
+    width: 33.333333%;
+}
+
+
 h1 {
     text-transform: uppercase;
     font-size: 1.5em;
@@ -90,16 +98,28 @@ a {
     height: 32px;
 }
 .facebook {
-    background-image: url("../img/facebook-rouge.png");
+    background-image: url("../img/pictos/facebook-rouge.png");
 }
 .instagram{
-    background-image: url("../img/instagram-rouge.png");
+    background-image: url("../img/pictos/instagram-rouge.png");
 }
 .twitter{
-    background-image: url("../img/twitter-rouge.png");
+    background-image: url("../img/pictos/twitter-rouge.png");
 }
 .linkedin{
-    background-image: url("../img/linkedin-rouge.png");
+    background-image: url("../img/pictos/linkedin-rouge.png");
+}
+.facebook:hover {
+    background-image: url("../img/pictos/facebook-blanc.png");
+}
+.instagram:hover {
+    background-image: url("../img/pictos/instagram-blanc.png");
+}
+.twitter:hover{
+    background-image: url("../img/pictos/twitter-blanc.png");
+}
+.linkedin:hover{
+    background-image: url("../img/pictos/linkedin-blanc.png");
 }
 .infoscontact h3, .infoscontact p, a, .textes, h1, #contact, ul li {
     color: white;
@@ -116,11 +136,21 @@ a {
 .reseaux p {
     align-self: center;
 }
-.footer {
-    bottom: 0px;
-}
-.detailprojet h1,
-.detailprojet p,
-.detailprojet h2 {
+
+
+/* CSS Detail projet */
+#detail_projet h1,
+#detail_projet p,
+#detail_projet h2 {
+    padding-top: 15px;
     color: white;
+}
+#detail_projet h1{
+    color: #D94158;
+}
+#detail_projet p{
+    font-size: 0.9em;
+}
+.footer a:hover, .reseaux p a:hover, .mail a:hover, .job a:hover{
+    color: #D94158;
 }
