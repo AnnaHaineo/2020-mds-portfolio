@@ -71,9 +71,9 @@
         </div>
 
         <div v-if="display === 'detail_projet'" id="detail_projet"
-            :style="'display: grid;grid-template-columns: repeat (4, 33,33333%) ;grid-template-rows: calc(100vh - 100px);'">
+            :style="'display: grid;grid-template-columns: repeat(4 , 33.333333%) ;grid-template-rows: calc(100vh - 100px);'">
             <div class="img">
-                <img class="img" :src="tabs[projet_selectionne].visuel1">
+                <img class="img" :src="tabs[projet_selectionne].imageUne">
             </div>
             <div class="ligne2" :style="'display: grid;grid-template-rows: auto auto;'">
                 <div class="textedetail">
@@ -81,26 +81,31 @@
                     <h2>Client : {{ tabs[projet_selectionne].client }}</h2>
                     <p>{{ tabs[projet_selectionne].descriptif1 }}</p><br>
                 </div>
+                <img class="img" :src="tabs[projet_selectionne].visuel1">
+            </div>
+            <div class="ligne3" :style="'display: grid;grid-template-rows: 80% 20%;'">
                 <img class="img" :src="tabs[projet_selectionne].visuel2">
+                <div class="listeEtiquette">
+                    <ul><li v-for="etiquette in afficherEtiquette()">{{etiquette}}</li></ul>
+                </div>
             </div>
-            <div class="ligne3" :style="'display: grid;grid-template-rows: 80% auto;'">
+            <div class="ligne4" :style="'display: grid;grid-template-rows: repeat(2, 50%);'">
+                <div class="expication">
+                    <p>{{ tabs[projet_selectionne].descriptif2 }}</p><br>
+                </div>
                 <img class="img" :src="tabs[projet_selectionne].visuel3">
-                <ul class><li v-for="etiquette in afficherEtiquette()">{{etiquette}}</li></ul>
-            </div>
-            <div class="ligne4">
-
             </div>
         </div>
 
         <div v-if="display === 'presentation'" id="pagepresentation"
-            :style="'display: grid;grid-template-columns: 33.3333% auto'">
-            <img class="imgcontact" src="img/image-contact.jpg">
+            :style="'display: grid;grid-template-columns: 33.3333% auto; grid-template-rows: calc(100vh - 100px);'">
+            <img class="img" src="img/image-contact.jpg">
             <div class="bio">
-                <h1>Annabelle grisard</h1>
+                <h1>Mon parcours</h1>
             </div>
         </div>
         <div v-if="display === 'contact'" id="pagecontact"
-            :style="'display: grid;grid-template-columns: 66.666666% auto'">
+            :style="'display: grid;grid-template-columns: 66.666666% auto; grid-template-rows: calc(100vh - 100px);'">
             <img class="imgcontact" src="img/image-contact.jpg">
             <div class="infoscontact" :style="'display: grid;grid-template-rows: auto 50px'">
                 <div class ="row1">

@@ -22,10 +22,10 @@ body {
 #logo {
     width: 100px;
 }
-ul li {
+#barre ul li {
     margin-left: 20px;
 }
-ul {
+#barre ul {
     list-style-type: none;
     display: flex;
 }
@@ -93,6 +93,8 @@ p, h2 {
 a {
     text-decoration: none;
 }
+
+/* CSS Contact*/
 .facebook, .instagram, .twitter, .linkedin {
     width: 32px;
     height: 32px;
@@ -137,8 +139,12 @@ a {
     align-self: center;
 }
 
+.footer a:hover, .reseaux p a:hover, .mail a:hover, .job a:hover{
+    color: #D94158;
+}
 
 /* CSS Detail projet */
+
 #detail_projet h1,
 #detail_projet p,
 #detail_projet h2 {
@@ -151,6 +157,24 @@ a {
 #detail_projet p{
     font-size: 0.9em;
 }
-.footer a:hover, .reseaux p a:hover, .mail a:hover, .job a:hover{
-    color: #D94158;
+.listeEtiquette ul{
+    padding: 0px;
+    margin: 0px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;  
 }
+.listeEtiquette ul li {
+    background-color:#D94158;
+    border-radius: 32px;
+    padding: 10px 20px 10px 20px;
+    color: black;
+    font-family: "MontserratSemiBold";
+    justify-self: space-evenly;
+    align-self: center;
+
+}
+
+
+
