@@ -24,6 +24,7 @@ body {
 }
 #barre ul li {
     margin-left: 20px;
+    text-align: center;
 }
 #barre ul {
     list-style-type: none;

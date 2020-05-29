@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Annabelle Grisard Portfolio</title>
 
 </head>
@@ -15,32 +17,85 @@
         font-weight: 300;
         src: url('fonts/Montserrat-ExtraLight.ttf');
     }
+
     @font-face {
         font-family: 'MontserratLight';
         font-weight: 400;
         src: url('fonts/Montserrat-Light.ttf');
     }
+
     @font-face {
         font-family: 'MontserratRegular';
         font-weight: 500;
         src: url('fonts/Montserrat-Regular.ttf');
     }
+
     @font-face {
         font-family: 'MontserratMedium';
         font-weight: 600;
         src: url('fonts/Montserrat-Medium.ttf');
     }
+
     @font-face {
         font-family: 'MontserratSemiBold';
         font-weight: 700;
         src: url('fonts/Montserrat-SemiBold.ttf');
     }
+
     @font-face {
         font-family: 'MontserratBold';
         font-weight: bold;
         src: url('fonts/Montserrat-Bold.ttf');
     }
 
+    .navCategorie > * {
+        display: none;
+    }
+
+    @media screen and (min-width: 750px) {
+        .navCategorie > * {
+            display: block;
+        }
+
+        .navCategorieBurger {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+        }
+    }
+
+    /* MENU NAV */
+    @import url('https://fonts.googleapis.com/css?family=Lato');
+
+    .burger {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+        color: inherit;
+        cursor: pointer;
+        font-family: 'Material Icons';
+        font-size: 30px;
+        line-height: 50px;
+        margin: 0;
+        outline: 0;
+        padding: 0;
+        position: absolute;
+        text-align: center;
+        top: 0;
+        right: 10px;
+        width: 50px;
+        color: white;
+    }
+
+    .burger:before {
+        content: 'menu';
+    }
+
+    .burger:checked:before {
+        content: 'close';
+    }
 </style>
 
 <body>
@@ -49,6 +104,12 @@
             <div class="listeTag">
                 <a href="index.html"><img id="logo" src="img/logo-blanc.png"></a>
                 <ul class="navCategorie">
+                    <li id="présentation"><a href="#" @click="display = 'presentation'">Présentation</a></li>
+                    <li v-for="tag in afficherTags()"><a href="#" v-on:click="filteredProjet(tag)">{{tag}}</a></li>
+                    <li id="contact"><a href="#" @click="display = 'contact'">Contact</a></li>
+                </ul>
+                <input class="burger" type="checkbox" v-model="displayburger">
+                <ul v-if="displayburger" class="navCategorieBurger">
                     <li id="présentation"><a href="#" @click="display = 'presentation'">Présentation</a></li>
                     <li v-for="tag in afficherTags()"><a href="#" v-on:click="filteredProjet(tag)">{{tag}}</a></li>
                     <li id="contact"><a href="#" @click="display = 'contact'">Contact</a></li>
@@ -86,7 +147,9 @@
             <div class="ligne3" :style="'display: grid;grid-template-rows: 80% 20%;'">
                 <img class="img" :src="tabs[projet_selectionne].visuel2">
                 <div class="listeEtiquette">
-                    <ul><li v-for="etiquette in afficherEtiquette()">{{etiquette}}</li></ul>
+                    <ul>
+                        <li v-for="etiquette in afficherEtiquette()">{{etiquette}}</li>
+                    </ul>
                 </div>
             </div>
             <div class="ligne4" :style="'display: grid;grid-template-rows: repeat(2, 50%);'">
@@ -108,7 +171,7 @@
             :style="'display: grid;grid-template-columns: 66.666666% auto; grid-template-rows: calc(100vh - 100px);'">
             <img class="imgcontact" src="img/image-contact.jpg">
             <div class="infoscontact" :style="'display: grid;grid-template-rows: auto 50px'">
-                <div class ="row1">
+                <div class="row1">
                     <h1>Me contacter</h1>
                     <div class="mail">
                         <h3>Email</h3>
@@ -117,7 +180,7 @@
                     <div class="job">
                         <h3>Jobs</h3>
                         <p><a href="mailto:jobsanna@gmail.com">jobsanna[@]gmail.com</a></p>
-                    </div>  
+                    </div>
                     <h3>Suivez-moi</h3>
                     <div class="reseaux">
                         <a href="#" class="facebook"></a>
@@ -158,6 +221,7 @@
                 nbrproj: 0,
                 categorie: '',
                 projets: [],
+                displayburger: false,
                 tabs: [
                     {
                         id: 1,
@@ -171,7 +235,7 @@
                         descriptif1: "Spécialiste en système de ventilation de chauffage pour bâtiments d'élevage, Pierre Triballier a confié à l'équipe de blue2i la création de son site internet de A à Z. Loin de la récupération de template tout fait gratuit ou payant, notre force réside dans l'écoute, l'analyse, afin de proposer à notre client un site internet sur mesure correspondant au plus près à ses besoins.",
                         descriptif2: "Un site internet pour répondre aux besoins de BHF Elevage : Rassurer ses clients sur son expertise et savoir-faire, apporter une aide aux installateurs par le biais de vidéos accessibles par thématiques, informer ses clients et partenaires de ses actions terrains en alimentant régulièrement une rubrique actualité, disposer d'un site internet facile à mettre à jour sans connaissance technique et graphique particulière",
                         tags: ['Webdesign'],
-                        etiquettes: ['photoshop','illustrator','industrie']
+                        etiquettes: ['photoshop', 'illustrator', 'industrie']
                     },
                     {
                         id: 2,
@@ -180,7 +244,7 @@
                         imageUne: "img/jardindesplantes.jpg",
                         descriptifUne: "Création d'un logo d'une communication globale pour un jardin des plantes Nantais",
                         tags: ['Charte graphique', 'Webdesign'],
-                        etiquettes: ['photoshop','illustrator','industrie']
+                        etiquettes: ['photoshop', 'illustrator', 'industrie']
                     },
                     {
                         id: 3,
@@ -189,7 +253,7 @@
                         imageUne: "img/amp.jpg",
                         descriptifUne: "Création du site internet pour Anjou Maquettes Prototypes, entreprise angevine",
                         tags: ['Webdesign', 'Développement'],
-                        etiquettes: ['photoshop','illustrator','industrie']
+                        etiquettes: ['photoshop', 'illustrator', 'industrie']
                     },
                     {
                         id: 4,
@@ -198,7 +262,7 @@
                         imageUne: "img/philips.jpg",
                         descriptifUne: "Site internet promotionel onepage pour une nouvelle gamme de casque chez Philips",
                         tags: ['Webdesign', 'Développement'],
-                        etiquettes: ['photoshop','illustrator','industrie']
+                        etiquettes: ['photoshop', 'illustrator', 'industrie']
                     },
                     {
                         id: 5,
@@ -207,11 +271,12 @@
                         imageUne: "img/civel.jpg",
                         descriptifUne: "Maquette de site internet de showroom de mobilier haut de gamme",
                         tags: ['Webdesign'],
-                        etiquettes: ['photoshop','illustrator','industrie']
+                        etiquettes: ['photoshop', 'illustrator', 'industrie']
                     }
                 ]
             },
             methods: {
+
 
                 change_display: function (id) {
                     this.display = 'detail_projet';
@@ -276,6 +341,7 @@
             }
         })
     </script>
+
 </body>
 
 </html>
