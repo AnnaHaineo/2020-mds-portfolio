@@ -26,9 +26,17 @@ body {
     margin-left: 20px;
     text-align: center;
 }
-#barre ul {
+.navCategorie{
     list-style-type: none;
     display: flex;
+    flex-direction: row;
+}
+.navcategorie {
+    flex-direction: column;
+}
+.navCategorieBurger li {
+    margin-bottom: 30px;
+    list-style-type: none;
 }
 .navCategorie {
     margin-right: 20px;
@@ -41,6 +49,7 @@ body {
 .listeTag ul li a {
     text-transform: capitalize;
 }
+
 #projets, #detail_projet, #pagecontact, #pagepresentation {
     padding-top: 98px;
 }
